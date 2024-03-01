@@ -1,13 +1,15 @@
 import pandas as pd
 from pymongo import MongoClient
 
+import config
+
 
 def aggregate_salary_data(dt_from, dt_upto, group_type):
     # Подключение к MongoDB
-    client = MongoClient('localhost', 27017)
+    client = MongoClient(config.MONGO_HOST, config.MONGO_PORT)
 
-    db = client['sampleDB']
-    collection = db['sample_collection']
+    db = client[config.MONGO_DB]
+    collection = db[config.MONGO_COLLECTION]
 
     dt_from = pd.to_datetime(dt_from)
     dt_upto = pd.to_datetime(dt_upto)
