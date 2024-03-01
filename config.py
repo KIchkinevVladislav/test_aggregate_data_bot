@@ -5,6 +5,8 @@ import environ
 Конфигурации проекта
 """
 env = environ.Env(
+    BOT_TOKEN=(str),
+
     MONGO_HOST=(str),
     MONGO_PORT=(int),
     MONGO_DB=(str),
@@ -14,6 +16,7 @@ env = environ.Env(
 BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
+BOT_TOKEN = env('BOT_TOKEN')
 
 MONGO_HOST = env('MONGO_HOST', default='localhost')
 
