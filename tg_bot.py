@@ -22,7 +22,7 @@ async def start_message(message: types.Message):
 @dp.message_handler()
 async def handle_text(message: types.Message):
     """
-    Обработка текстовых сообщений и возврат  данных
+    Обработка текстовых сообщений и возврат данных
     """
     try:
         data = json.loads(message.text)
@@ -31,9 +31,9 @@ async def handle_text(message: types.Message):
         group_type = data['group_type']
 
         result = aggregate_salary_data(dt_from, dt_upto, group_type)
-        await message.reply(f'{result}')
+        await message.answer(f'{result}')
     except Exception as e:
-        await message.reply(f'Ошибка обработки данных: {e}')
+        await message.answer(f'Ошибка обработки данных: {e}')
 
 
 # Запуск бота
