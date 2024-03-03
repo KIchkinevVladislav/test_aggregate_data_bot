@@ -4,7 +4,6 @@ from aiogram import Bot, Dispatcher, executor, types
 import config
 from app import aggregate_salary_data
 
-
 bot = Bot(token=config.BOT_TOKEN)
 dp = Dispatcher(bot)
 
@@ -29,7 +28,6 @@ async def handle_text(message: types.Message):
         dt_from = data['dt_from']
         dt_upto = data['dt_upto']
         group_type = data['group_type']
-
         result = aggregate_salary_data(dt_from, dt_upto, group_type)
         await message.answer(f'{result}')
     except Exception as e:
